@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Login from 'pages/Login';
+import Logout from 'pages/Logout';
 import DashBoard from 'pages/DashBoard';
 
 function App() {
@@ -9,7 +10,10 @@ function App() {
       <Routes>
         <Route path="/">
           <Route index element={<DashBoard/>} />
-          <Route path="/login" element={<Login/>} />
+          <Route path="/auth">
+            <Route path="login" element={<Login/>} />
+            <Route path="logout" element={<Logout/>} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

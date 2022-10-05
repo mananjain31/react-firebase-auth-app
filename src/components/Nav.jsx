@@ -1,17 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth } from "utils/FirebaseConfigs";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 const Nav = () => {
   const [user, loading] = useAuthState(auth);
-
   return (
     <nav className="flex items-center justify-between py-2">
       <Link to="/">
         <h1>Home</h1>
       </Link>
       {user ? (
-        <Link to="/logout">
+        <Link to="/auth/logout">
           <button
             className="
             flex items-center gap-3
@@ -22,7 +21,7 @@ const Nav = () => {
           </button>
         </Link>
       ) : (
-        <Link to="/login">
+        <Link to="/auth/login">
           <button className="text-lg text-white bg-blue-700 py-2 rounded-xl px-4">
             Login
           </button>
